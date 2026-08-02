@@ -1,12 +1,25 @@
-LOCAL_PATH := device/xiaomi/vili
+#
+# Copyright (C) 2026 The AetherUI Project
+#
+# SPDX-License-Identifier: Apache-2.0
+#
 
+# Inherit from common sm8350 configurations
+$(call inherit-product, device/xiaomi/sm8350-common/common.mk)
+
+# Inherit from proprietary vendor blobs
 $(call inherit-product, vendor/xiaomi/vili/vili-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
+# Device Product Name
+PRODUCT_NAME := aether_vili
+PRODUCT_DEVICE := vili
+PRODUCT_MODEL := Xiaomi 11T Pro
 
-PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service \
-    vendor.qti.hardware.vibrator.service
+PRODUCT_MANUFACTURER := xiaomi
+PRODUCT_BRAND := Xiaomi
 
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
+# Fingerprint / Build Info (Android 14 / UKDMIXM)
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="vili-user 14 UKQ1.230917.001 V816.0.14.0.UKDMIXM release-keys"
+
+BUILD_FINGERPRINT := Xiaomi/vili/vili:14/UKQ1.230917.001/V816.0.14.0.UKDMIXM:release-keys
