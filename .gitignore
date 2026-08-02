@@ -1,0 +1,4 @@
+/proprietary/
+*.zip
+*.img
+.DS_Store
